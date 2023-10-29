@@ -1,0 +1,44 @@
+package com.juancarlos.backend.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+
+import com.juancarlos.backend.entity.models.Animal;
+import com.juancarlos.backend.entity.services.IAnimalService;
+
+public class AnimalController {
+	
+	@Autowired
+	IAnimalService animalService;
+	
+	@GetMapping("/animal")
+	public List<Animal> getAllAnimal(){
+		return animalService.getAll();
+	}
+	
+	@GetMapping("/animal/{animal_id}")
+	public Animal getOne(@PathVariable(value = "animal_id") long animal_id) {
+		return animalService.get(animal_id);
+	}
+	
+	@PostMapping("/zoo")
+	public void post(Animal animal, long zoo_id, long animalType_id) {
+		animalService.post(animal,zoo_id,animalType_id);
+	}
+	
+	@PutMapping("/animal/{animal_id}")
+	public void put(Animal animal, @PathVariable(value = "animal_id") long animal_id) {
+		animalService.put(animal, animal_id);
+	}
+	
+	@DeleteMapping("/animal/{animal_id}")
+	public void delete(@PathVariable(value = "animal_id") long animal_id) {
+		animalService.delete(animal_id);
+	}
+}

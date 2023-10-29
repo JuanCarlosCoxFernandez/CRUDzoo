@@ -1,0 +1,112 @@
+package com.juancarlos.backend.entity.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.juancarlos.backend.entity.dao.IAnimalDao;
+import com.juancarlos.backend.entity.models.Animal;
+
+
+//para las relaciones se necesitan los otros DAO
+import com.juancarlos.backend.entity.dao.IAnimalTypeDao;
+import com.juancarlos.backend.entity.dao.IZooDao;
+//////////////////////////////////////////////////////////////////////////////////
+
+@Service
+public class AnimalServiceImpl implements IAnimalService{
+	
+	@Autowired
+	private IAnimalDao animalDao;
+	
+	@Autowired
+	private IAnimalTypeDao animalTypeDao;
+	
+	@Autowired
+	private IZooDao zooDao;
+
+	@Override
+	public Animal findOne(Long animal_id) {
+		return animalDao.findById(animal_id).get();
+	}
+
+	@Override
+	public List<Animal> findAll() {
+		return (List<Animal>) animalDao.findAll();
+	}
+
+	@Override
+	public List<Animal> getAllAnimalsByZooId(long zoo_id) {
+		List<Animal> animals = animalDao.findByZooId(zoo_id);
+		return animals;
+	}
+
+	@Override
+	public List<Animal> getAllAnimalsByAnimalTypeId(long animal_type_id) {
+		List<Animal> animals = animalDao.findByAnimalTypeId(animal_type_id);
+		return animals;
+	}
+
+	@Override
+	public void save(Animal animal) {
+		animalDao.save(animal);
+		
+	}
+
+	@Override
+	public void saveAnimalInZooByZooId(Animal animal, long zoo_id) {
+		zooDao.findById(zoo_id).ifPresent(x-> {
+			animal.setZoo(x);
+			animalDao.save(animal);
+		});
+		
+	}
+
+	@Override
+	public void saveAnimalInAnimalTypeByAnimalTypeId(Animal animal, long animal_type_id) {
+		animalTypeDao.findById(animal_type_id).ifPresent((x)-> {
+			animal.setAnimalType(x);
+			animalDao.save(animal);
+		});
+		
+	}
+
+	@Override
+	public void update(Animal animal, long animal_id) {
+		animalDao.findById(animal_id).ifPresent((x)->{
+			animal.setAnimal_id(x.getAnimal_id());
+			animalDao.save(animal);
+		});
+		
+	}
+
+	@Override
+	public void delete(long animal_id) {
+		animalDao.deleteById(animal_id);
+		
+	}
+	
+	@Override
+	public void addZooToAnimal(long zoo_id, long animal_id) {
+		animalDao.findById(animal_id).ifPresent((x)->{
+			zooDao.findById(zoo_id).ifPresent((y)-> {
+				x.setZoo(y);
+				animalDao.save(x);
+			});
+		});
+	}
+	
+	@Override
+	public void addAnimalTypeToAnimal(long animal_type_id, long animal_id) {
+		animalDao.findById(animal_id).ifPresent((x)->{
+			animalTypeDao.findById(animal_type_id).ifPresent((y)-> {
+				x.setAnimalType(y);
+				animalDao.save(x);
+			});
+		});
+	}
+
+	
+
+}

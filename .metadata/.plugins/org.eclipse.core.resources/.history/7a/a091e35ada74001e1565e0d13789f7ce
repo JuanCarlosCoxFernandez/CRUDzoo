@@ -1,0 +1,15 @@
+package com.juancarlos.backend.entity.services;
+
+import java.util.List;
+
+import com.juancarlos.backend.entity.models.Animal;
+
+public interface IAnimalService {
+	
+	public Animal get(Long animal_id);
+	public List<Animal> getAll();
+	public void post(Animal animal, long zoo_id, long animalType_id);
+	public void put(Animal animal, long animal_id);
+	public void delete(long animal_id);
+	
+}

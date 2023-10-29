@@ -1,0 +1,68 @@
+package com.juancarlos.backend.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.juancarlos.backend.entity.models.Animal;
+import com.juancarlos.backend.entity.services.IAnimalService;
+
+@CrossOrigin(origins = "*")
+@RestController
+public class AnimalController {
+	
+	@Autowired
+	IAnimalService animalService;
+	
+	@GetMapping("/animal")
+	public List<Animal> getAllAnimal(){
+		return animalService.findAll();
+	}
+	
+	@GetMapping("/animal/{animal_id}")
+	public Animal getAnimal(@PathVariable(value = "animal_id") long animal_id) {
+		return animalService.findOne(animal_id);
+	}
+	
+	@GetMapping("/zoo/{zoo_id}/animal")
+	public List<Animal> getAllAnimalsByZooId(@PathVariable (value = "zoo_id") Long zoo_id){
+		return animalService.getAllAnimalsByZooId(zoo_id);
+	}
+	
+	@GetMapping("/animaltype/{animal_type_id}/animal")
+	public List<Animal> getAllAnimalsByAnimalTypeId(@PathVariable (value = "animal_type_id") Long animal_type_id){
+		return animalService.getAllAnimalsByAnimalTypeId(animal_type_id);
+	}
+	
+	@PostMapping("/animal")
+	public void save(Animal animal) {
+		animalService.save(animal);
+	}
+	
+	@PostMapping("/zoo/{zoo_id}/animal")
+	public void saveZoo(Animal animal,@PathVariable (value = "zoo_id") Long zoo_id) {
+		animalService.saveAnimalInZooByZooId(animal, zoo_id);
+	}
+	
+	@PostMapping("/animaltype/{animal_type_id}/animal")
+	public void saveType(Animal animal,@PathVariable (value = "animal_type_id") Long animal_type_id) {
+		animalService.saveAnimalInAnimalTypeByAnimalTypeId(animal, animal_type_id);
+	}
+	
+	@PutMapping("/animal/{animal_id}")
+	public void update(Animal animal, @PathVariable(value = "animal_id") long animal_id) {
+		animalService.update(animal, animal_id);
+	}
+	
+	@DeleteMapping("/animal/{animal_id}")
+	public void delete(@PathVariable(value = "animal_id") long animal_id) {
+		animalService.delete(animal_id);
+	}
+}

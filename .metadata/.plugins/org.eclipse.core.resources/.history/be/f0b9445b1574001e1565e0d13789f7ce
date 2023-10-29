@@ -1,0 +1,5 @@
+package com.juancarlos.backend.entity.models;
+
+public class AnimalType {
+
+}

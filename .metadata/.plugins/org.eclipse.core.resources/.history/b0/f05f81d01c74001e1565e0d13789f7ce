@@ -1,0 +1,39 @@
+package com.juancarlos.backend.entity.services;
+
+import java.util.List;
+
+import com.juancarlos.backend.entity.models.Animal;
+
+public class AnimalServiceImpl implements IAnimalService{
+
+	@Override
+	public Animal get(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Animal> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void post(Animal animal) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void put(Animal animal, long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

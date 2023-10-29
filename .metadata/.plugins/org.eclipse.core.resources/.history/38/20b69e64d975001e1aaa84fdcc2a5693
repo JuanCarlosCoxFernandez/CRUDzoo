@@ -1,0 +1,83 @@
+package com.juancarlos.backend.entity.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.juancarlos.backend.entity.dao.IAnimalDao;
+import com.juancarlos.backend.entity.models.Animal;
+
+
+//para las relaciones se necesitan los otros DAO
+import com.juancarlos.backend.entity.dao.IAnimalTypeDao;
+import com.juancarlos.backend.entity.dao.IZooDao;
+//////////////////////////////////////////////////////////////////////////////////
+
+@Service
+public class AnimalServiceImpl implements IAnimalService{
+	
+	@Autowired
+	private IAnimalDao animalDao;
+	
+	@Autowired
+	private IAnimalTypeDao animalTypeDao;
+	
+	@Autowired
+	private IZooDao zooDao;
+
+	@Override
+	public Animal findOne(Long animal_id) {
+		return animalDao.findById(animal_id).get();
+	}
+
+	@Override
+	public List<Animal> findAll() {
+		return (List<Animal>) animalDao.findAll();
+	}
+
+	@Override
+	public List<Animal> getAllAnimalsByZooId(long zoo_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Animal> getAllAnimalsByAnimalTypeId(long animalType_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void save(Animal animal) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveAnimalInZooByZooId(Animal animal, long zoo_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveAnimalInAnimalTypeByAnimalTYpeId(Animal animal, long animalType_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Animal animal, long animal_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(long animal_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+}

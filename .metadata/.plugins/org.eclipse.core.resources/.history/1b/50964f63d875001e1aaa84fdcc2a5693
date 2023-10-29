@@ -1,0 +1,15 @@
+package com.juancarlos.backend.entity.services;
+
+import java.util.List;
+
+import com.juancarlos.backend.entity.models.Zoo;
+
+public interface IZooService {
+	
+	public Zoo get(Long zoo_id);
+	public List<Zoo> getAll();
+	public void post(Zoo zoo);
+	public void put(Zoo zoo, long zoo_id);
+	public void delete(long zoo_id);
+
+}

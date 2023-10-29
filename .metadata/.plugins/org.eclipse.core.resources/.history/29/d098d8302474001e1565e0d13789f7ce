@@ -1,0 +1,37 @@
+package com.juancarlos.backend.controllers;
+
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.juancarlos.backend.entity.models.Zoo;
+import com.juancarlos.backend.entity.services.IZooService;
+
+public class ZooController {
+	
+	@Autowired
+	IZooService zooService;
+	
+	@GetMapping("/zoo")
+	public List<Zoo> getAllZoo(){
+		return zooService.getAll();
+	}
+	
+	@GetMapping("/zoo/{id}")
+	public Zoo getOne(@PathVariable(value = "id") long id) {
+		return zooService.get(id);
+	}
+	
+	@PostMapping("/zoo")
+	public void post(Zoo zoo) {
+		zooService.post(zoo);
+	}
+	
+	@PutMapping("/zoo/{id}")
+	public void put(Zoo zoo, @PathVariable(value = "id") long id) {
+		zooService.put(zoo, id);
+	}
+	
+	@DeleteMapping("/zoo/{id}")
+	public void delete(@PathVariable(value = "id") long id) {
+		zooService.delete(id);
+	}
+}

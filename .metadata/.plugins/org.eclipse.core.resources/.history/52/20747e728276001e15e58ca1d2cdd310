@@ -1,0 +1,14 @@
+package com.juancarlos.backend.entity.services;
+
+import java.util.List;
+
+import com.juancarlos.backend.entity.models.AnimalType;
+
+public interface IAnimalTypeService {
+	
+	public AnimalType findOne(Long animalType_id);
+	public List<AnimalType> findAll();
+	public void save(AnimalType animaltype);
+	public void update(AnimalType animaltype, long animalType_id);
+	public void delete(long animalType_id);
+}

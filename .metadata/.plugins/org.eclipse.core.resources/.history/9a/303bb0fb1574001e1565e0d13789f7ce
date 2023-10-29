@@ -1,0 +1,10 @@
+package com.juancarlos.backend.entity.models;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "animal")
+public class Animal {
+
+}

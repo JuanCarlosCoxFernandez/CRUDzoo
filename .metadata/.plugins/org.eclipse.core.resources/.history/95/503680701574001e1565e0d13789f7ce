@@ -1,0 +1,16 @@
+package com.juancarlos.backend.entity.models;
+
+
+
+@Entity
+@Table(name = "animaltype")
+public class AnimalType implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long zoo_id;
+	
+	private String name;
+}

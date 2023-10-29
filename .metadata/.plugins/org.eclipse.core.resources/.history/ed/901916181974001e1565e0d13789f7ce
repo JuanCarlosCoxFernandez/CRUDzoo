@@ -1,0 +1,7 @@
+package com.juancarlos.backend.entity.dao;
+
+import com.juancarlos.backend.entity.models.*;
+
+public class IZooDao extends CrudRepository<Zoo, long>{
+
+}

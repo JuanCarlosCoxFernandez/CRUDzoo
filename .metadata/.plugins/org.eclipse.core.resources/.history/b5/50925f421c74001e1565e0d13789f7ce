@@ -1,0 +1,45 @@
+package com.juancarlos.backend.entity.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.juancarlos.backend.entity.dao.IZooDao;
+import com.juancarlos.backend.entity.models.Zoo;
+
+@Service
+public class ZooServiceImpl implements IZooService{
+	
+	@Autowired
+	private IZooDao zooDao;
+	
+
+	@Override
+	public Zoo get(Long id) {
+		return zooDao.findById(id).get();
+	}
+
+	@Override
+	public List<Zoo> getAll() {
+		return (List<Zoo>) zooDao.findAll();
+	}
+
+	@Override
+	public void post(Zoo zoo) {
+		zooDao.save(zoo);
+		
+	}
+
+	@Override
+	public void put(Zoo zoo, long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(long id) {
+		// TODO Auto-generated method stub
+		
+	}
+}

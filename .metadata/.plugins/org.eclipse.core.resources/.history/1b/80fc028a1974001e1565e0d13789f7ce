@@ -1,0 +1,5 @@
+package com.juancarlos.backend.entity.dao;
+
+public interface IAnimalDao {
+
+}

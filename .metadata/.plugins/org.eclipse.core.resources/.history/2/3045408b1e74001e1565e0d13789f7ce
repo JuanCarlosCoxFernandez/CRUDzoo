@@ -1,0 +1,44 @@
+package com.juancarlos.backend.entity.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.juancarlos.backend.entity.dao.IAnimalTypeDao;
+import com.juancarlos.backend.entity.models.Animal;
+import com.juancarlos.backend.entity.models.AnimalType;
+
+public class AnimalTypeServiceImpl implements IAnimalTypeService{
+	
+	@Autowired
+	private IAnimalTypeDao animaltypeDao;
+
+	@Override
+	public AnimalType get(Long id) {
+		return animaltypeDao.findById(id).get();
+	}
+
+	@Override
+	public List<AnimalType> getAll() {
+		return (List<AnimalType>) animaltypeDao.findAll();
+	}
+
+	@Override
+	public void post(AnimalType animaltype) {
+		animaltypeDao.save(animaltype);
+		
+	}
+
+	@Override
+	public void put(AnimalType animaltype, long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,79 @@
+package com.juancarlos.backend.entity.models;
+
+import java.io.Serializable;
+
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "animal")
+public class Animal implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long animal_id;
+	
+	private String name;
+	
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "zoo_name")
+    private Zoo zoo;
+
+    @ManyToOne
+    @JoinColumn(name = "type_name")
+    private AnimalType animalType;
+
+	public long getAnimal_id() {
+		return animal_id;
+	}
+
+	public void setAnimal_id(long animal_id) {
+		this.animal_id = animal_id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Zoo getZoo() {
+		return zoo;
+	}
+
+	public void setZoo(Zoo zoo) {
+		this.zoo = zoo;
+	}
+
+	public AnimalType getType_name() {
+		return animalType;
+	}
+
+	public void setType_name(AnimalType type_name) {
+		this.animalType = type_name;
+	}
+
+	public Animal(long animal_id, String name, Zoo zoo, AnimalType animalType) {
+		super();
+		this.animal_id = animal_id;
+		this.name = name;
+		this.zoo = zoo;
+		this.animalType = animalType;
+	}
+	
+    
+    public Animal() {
+    	
+    }
+}

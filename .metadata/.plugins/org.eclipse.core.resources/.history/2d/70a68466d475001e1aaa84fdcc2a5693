@@ -1,0 +1,64 @@
+package com.juancarlos.backend.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.juancarlos.backend.entity.models.Animal;
+import com.juancarlos.backend.entity.services.IAnimalService;
+
+
+@RestController
+@CrossOrigin(origins = "*")
+public class AnimalController {
+	
+	@Autowired
+	IAnimalService animalService;
+	
+	@GetMapping("/animal")
+	public List<Animal> getAllAnimal(){
+		return animalService.findAll();
+	}
+	
+	@GetMapping("/animal/{animal_id}")
+	public Animal getAnimal(@PathVariable(value = "animal_id") long animal_id) {
+		return animalService.findOne(animal_id);
+	}
+	
+	@GetMapping("/zoo/{zoo_id}/animal")
+	public List<Animal> getAllAnimalsByZooId(@PathVariable (value = "zoo_id") Long zoo_id){
+		return animalService.getAllAnimalsByZooId(zoo_id);
+	}
+	
+	@GetMapping("/animaltype/{animalType_id}/animal")
+	public List<Animal> getAllAnimalsByAnimalTypeId(@PathVariable (value = "animalType_id") Long animalType_id){
+		return animalService.getAllAnimalsByAnimalTypeId(animalType_id);
+	}
+	
+	@PostMapping("/animal")
+	public void post(Animal animal) {
+		animalService.post(animal);
+	}
+	
+	@PostMapping("/zoo/{zoo_id}/animal")
+	public void save(Animal animal,@PathVariable (value = "zoo_id") Long zoo_id) {
+		animalService.saveAnimalInZooByZooId(animal, zoo_id);
+	}
+	
+	@PutMapping("/animal/{animal_id}")
+	public void put(Animal animal, @PathVariable(value = "animal_id") long animal_id) {
+		animalService.put(animal, animal_id);
+	}
+	
+	@DeleteMapping("/animal/{animal_id}")
+	public void delete(@PathVariable(value = "animal_id") long animal_id) {
+		animalService.delete(animal_id);
+	}
+}

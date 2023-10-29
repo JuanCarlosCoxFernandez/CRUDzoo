@@ -1,0 +1,19 @@
+package com.juancarlos.backend.controllers;
+
+import com.juancarlos.backend.entity.services.IZooService;
+
+public class ZooController {
+	
+	@Autowired
+	IZooService zooService;
+	
+	@GetMapping("/zoo")
+	public List<Zoo> getAllZoo(){
+		return zooService.getAll();
+	}
+	
+	@GetMapping("/zoo/{id}")
+	public Zoo getOne(@PathVariable(value = "id") Long id) {
+		return zooService.get(id);
+	}
+}

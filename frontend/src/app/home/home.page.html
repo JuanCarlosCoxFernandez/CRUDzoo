@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <h1 class="brand">CRUD Zoo</h1>
+    <p>Animals and zoos</p>
+  </div>
+  <ion-button expand="block" (click)="gotoZoo()">Zoo</ion-button>
+  <br>
+  <ion-button expand="block" (click)="gotoAnimal()">Animal</ion-button>
+  <br>
+  <ion-button expand="block" (click)="gotoAnimalType()">Animal Type</ion-button>
+
+</ion-content>

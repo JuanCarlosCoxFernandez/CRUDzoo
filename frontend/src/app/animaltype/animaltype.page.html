@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>animaltype</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col size="12" class="ion-text-center">
+      <ion-button style="width: 100%;" (click)="gotoCreateAnimalType()">Create Zoo</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-list>
+    <ion-item *ngFor="let a of animaltypes">
+      <!-- DECOMMENT: -->
+      <ion-avatar slot="start">
+      </ion-avatar>
+      <ion-label>
+        <h1>{{a.animalType_id}}</h1>
+        <p>{{a.type_name}}</p>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" class="ion-text-center">
+              <ion-button style="width: 75%;" (click)="gotoUpdateAnimaltype(a.animalType_id)">Update task</ion-button>
+            </ion-col>
+            <ion-col size="6" class="ion-text-center">
+              <ion-button color="danger" style="width: 75%;" (click)="deleteAnimaltype(a.animalType_id)">Finished</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
