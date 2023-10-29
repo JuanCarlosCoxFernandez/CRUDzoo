@@ -28,7 +28,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">IonicNotes</h3>
+  <h3 align="center">CRUDzoo</h3>
 </div>
 
 
