@@ -8,7 +8,7 @@
 <ion-content [fullscreen]="true">
   <ion-row>
     <ion-col size="12" class="ion-text-center">
-      <ion-button style="width: 100%;" (click)="gotoCreateAnimal()">Create Zoo</ion-button>
+      <ion-button style="width: 100%;" (click)="gotoCreateAnimal()">Create Animal</ion-button>
     </ion-col>
   </ion-row>
   <ion-list>
@@ -19,8 +19,8 @@
       <ion-label>
         <h1>{{a.animal_id}}</h1>
         <p>{{a.name}}</p>
-        <p>{{a.zoo}}</p>
-        <p>{{a.animalType}}</p>
+        <p>{{a.zoo.name}}</p>
+        <p>{{a.animalType.type_name}}</p>
         <ion-grid>
           <ion-row>
             <ion-col size="6" class="ion-text-center">

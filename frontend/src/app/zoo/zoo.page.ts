@@ -36,6 +36,7 @@ export class ZooPage implements OnInit {
     this.animalService.deletezoo(id).subscribe(response => {
       this.zoos = response;
     })
+    location.reload();
   }
 
 }

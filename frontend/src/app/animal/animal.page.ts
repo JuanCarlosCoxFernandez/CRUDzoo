@@ -36,6 +36,7 @@ export class AnimalPage implements OnInit {
     this.animalService.deleteanimal(id).subscribe(response => {
       this.animals = response;
     })
+    location.reload();
   }
 
 }

@@ -5,9 +5,26 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">create_animal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="animalForm" (ngSubmit)="submitFormAnimal()" novalidate>
+    <ion-item lines="full">
+      <ion-label position="floating">name</ion-label>
+      <ion-input formControlName="name" type="text" required></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl['name'].errors?.['required']"> Name is required.</span>
+    <ion-item lines="full">
+      <ion-label position="floating">zoo</ion-label>
+      <ion-input formControlName="zoo" type="text" required></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl['zoo'].errors?.['required']"> Zoo is required.</span>
+    <ion-item lines="full">
+      <ion-label position="floating">animalType</ion-label>
+      <ion-input formControlName="animalType" type="text" required></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl['animalType'].errors?.['required']"> AnimalType is required.</span>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

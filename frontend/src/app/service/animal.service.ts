@@ -23,12 +23,24 @@ export class AnimalService {
     return this.httpClient.get(this.endpointZ);
   }
 
+  getzoobyid(id:any){
+    return this.httpClient.get(this.endpointZ+"/"+id);
+  }
+
   getanimal(){
     return this.httpClient.get(this.endpointA);
   }
 
+  getanimalbyid(id:any){
+    return this.httpClient.get(this.endpointA+"/"+id);
+  }
+
   getanimaltype(){
     return this.httpClient.get(this.endpointAT);
+  }
+
+  getanimaltypebyid(id:any){
+    return this.httpClient.get(this.endpointAT+"/"+id);
   }
 
   deletezoo(id:string){
@@ -63,13 +75,14 @@ export class AnimalService {
     return this.httpClient.post(this.endpointAT,body,httpOptions);
   }
 
-  updatezoo(id:string,zoo:any){
+  updatezoo(id:any, zoo:any){
     let body = new URLSearchParams();
     body.append("name", zoo.zoo_name);
-    return this.httpClient.put(this.endpointZ+`/${id}`,body,httpOptions);
+    console.log(zoo.zoo_name);
+    return this.httpClient.put(this.endpointZ+`/${id}`, body,httpOptions);
   }
 
-  updateanimal(id:string,animal:any){
+  updateanimal(id:any,animal:any){
     let body = new URLSearchParams();
     body.append("name", animal.name);
     body.append("zoo", animal.zoo);
@@ -77,7 +90,7 @@ export class AnimalService {
     return this.httpClient.put(this.endpointA+`/${id}`,body,httpOptions);
   }
 
-  updateanimaltype(id:string,animaltype:any){
+  updateanimaltype(id:any,animaltype:any){
     let body = new URLSearchParams();
     body.append("type_name", animaltype.type_name);
     return this.httpClient.put(this.endpointAT+`/${id}`,body,httpOptions);

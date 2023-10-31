@@ -5,7 +5,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <form formGroup="zooForm" (ngSubmit)="submitFormZoo()" novalidate>
+
+  <form [formGroup]="zooForm" (ngSubmit)="submitFormZoo()" novalidate>
     <ion-item lines="full">
       <ion-label position="floating">Zoo name</ion-label>
       <ion-input formControlName="zoo_name" type="text" required></ion-input>
@@ -17,4 +18,5 @@
       </ion-col>
     </ion-row>
   </form>
+  
 </ion-content>
