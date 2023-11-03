@@ -62,8 +62,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This proyect is an example of an app of notes using Angular/Ionic in the frontend, Spring in the backend and in this case MySQL Workbench for the DataBase. The only really part that is a litle bit more complex is in the popup used to do de Update 
-because I use an alert and to take the data from the inputs you need to search really hard for the funcion.
+This proyect is an example of an app of zoos using Angular/Ionic in the frontend, Spring in the backend and in this case MySQL Workbench for the DataBase.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -94,15 +93,32 @@ For the instalation of this proyect it´s recommendable to look the next steps.
 This are the things you will need in order to create this proyect.
 
 *The DataBase:
-  CREATE DATABASE db_diary;
+CREATE DATABASE db_zoo;
 
-  USE db_diary;
-  
-  CREATE TABLE task (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      task_title VARCHAR(45) NOT NULL,
-      task_content longtext NOT NULL,
-  );
+USE db_zoo;
+
+CREATE TABLE Zoo (
+	zoo_id INT AUTO_INCREMENT PRIMARY KEY,
+	zoo_name VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE AnimalType (
+	animal_type_id INT AUTO_INCREMENT PRIMARY KEY,
+	type_name VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE Animal (
+	animal_id INT AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(45) NOT NULL,
+	zoo INT,
+	type INT,
+	FOREIGN KEY (zoo) REFERENCES Zoo(zoo_id) ON DELETE CASCADE ON CREATE CASCADE,
+	FOREIGN KEY (type) REFERENCES AnimalType(animalType_id) ON DELETE CASCADE ON CREATE CASCADE
+);
+
+![Captura de pantalla 2023-10-31 162053](https://github.com/JuanCarlosCoxFernandez/CRUDzoo/assets/146579185/01cf8042-4562-41a4-b42e-0c245b76f5f8)
+
+
 * Install NodeJS and JDK 17
 * npm install -g @ionic/cli
 * ionic serve (to run the proyect)
@@ -112,7 +128,7 @@ This are the things you will need in order to create this proyect.
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/JuanCarlosCoxFernandez/IonicNotes.git
+   git clone https://github.com/JuanCarlosCoxFernandez/CRUDzoo.git
    ```
 3. Install NPM packages
    ```sh
